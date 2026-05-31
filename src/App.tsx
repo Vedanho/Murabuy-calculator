@@ -1,7 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import "./App.css";
 
-import { SETTINGS } from "./constants";
 import { calculate, buildSchedule, formatMoney, formatNumber, parseMoney, paymentWord } from "./utils";
 import { Header } from "./components/Header";
 import { InputCard } from "./components/InputCard";
