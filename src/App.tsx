@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import "./App.css";
 
+import { SETTINGS } from "./constants";
 import { calculate, buildSchedule, formatMoney, formatNumber, parseMoney, paymentWord } from "./utils";
 import { Header } from "./components/Header";
 import { InputCard } from "./components/InputCard";
@@ -37,13 +38,13 @@ function App() {
     [price, downPayment, term, markupRate],
   );
 
-  const whatsAppText = `
-Стоимость товара: ${formatMoney(result.price)}
+  const shareText = `Стоимость товара: ${formatMoney(result.price)}
 Срок: ${term} ${paymentWord(term)}
 Первоначальный взнос: ${formatMoney(result.downPayment)}
 Ежемесячный платеж: ${formatMoney(result.monthly)}
 Итого: ${formatMoney(result.total)}`;
-  const whatsAppUrl = `https://wa.me/?text=${encodeURIComponent(whatsAppText)}`;
+
+  const whatsAppUrl = `https://wa.me/${SETTINGS.whatsAppPhone}?text=${encodeURIComponent(shareText)}`;
 
   async function copySchedule() {
     const text = buildSchedule(result);
